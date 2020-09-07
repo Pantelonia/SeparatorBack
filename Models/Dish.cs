@@ -7,8 +7,9 @@ namespace SeparatorBack.Models
 {
     public class Dish
     {
+        public int Id { get; set; }
         private string name;
-        private decimal cost;
+        private int cost;
         //Dish may be of two types: 
         //    false - personally, when only you eat this dish(defaul value)
         //    true - communal, when all friands eat this dish(i.e. snack)
@@ -28,7 +29,7 @@ namespace SeparatorBack.Models
                 return name;
             }
         }
-        public decimal Cost
+        public int Cost
         {
             set
             {
@@ -44,8 +45,8 @@ namespace SeparatorBack.Models
         }
 
         public Dish() : this("Unname", 0) { }
-        public Dish(string name, decimal cost) : this(name, cost, false) { }
-        public Dish(string name, decimal cost, bool type)
+        public Dish(string name, int cost) : this(name, cost, false) { }
+        public Dish(string name, int cost, bool type)
         {
             Name = name;
             Cost = cost;

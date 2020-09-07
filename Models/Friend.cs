@@ -7,6 +7,7 @@ namespace SeparatorBack.Models
 {
     public class Friend
     {
+        public int Id { get; set; }
         private string name;
         public List<Dish> dishes;
 
@@ -26,25 +27,11 @@ namespace SeparatorBack.Models
             }
         }
 
-        public void Add_dish()
-        {
-            string name = Input.ReadString("Input name of dish");
-            int cost = Input.ReadInt("Input cost", min: 0, max: Int32.MaxValue);
-            dishes.Add(new Dish(name, cost));
-
-        }
         public void Add_dish(Dish dish)
         {
             dishes.Add(dish);
         }
-        public void Print_all_dishes()
-        {
-
-            foreach (Dish dish in dishes)
-            {
-                Console.WriteLine(dish.Name);
-            }
-        }
+      
         public decimal TakeCost()
         {
             decimal cost = 0;

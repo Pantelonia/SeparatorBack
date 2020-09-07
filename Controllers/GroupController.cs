@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using SeparatorBack.Models;
 using System.Threading.Tasks;
 
+
 namespace SeparatorBack.Controllers
 {
     [Route("api/[controller]")]
@@ -16,10 +17,13 @@ namespace SeparatorBack.Controllers
         {
             db = context;
             if (!db.Groups.Any())
-            {
-                db.Groups.Add(new Group { Name = "Tom", Age = 26 });
-                db.Groups.Add(new Group { Name = "Alice", Age = 31 });
+            {                
+                Group group = new Group("Pokorili");
+                //group.AddNewFriend("Paul");
+                //Dish dish = new Dish("Borsch", 70);
+                //group.Create_personal_dish(dish, "Paul");
                 db.SaveChanges();
+
             }
         }
         [HttpGet]

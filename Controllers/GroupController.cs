@@ -19,9 +19,10 @@ namespace SeparatorBack.Controllers
             if (!db.Groups.Any())
             {                
                 Group group = new Group("Pokorili");
-                //group.AddNewFriend("Paul");
-                //Dish dish = new Dish("Borsch", 70);
-                //group.Create_personal_dish(dish, "Paul");
+                group.AddNewFriend("Paul");
+                Dish dish = new Dish("Borsch", 70);
+                group.Create_personal_dish(dish, "Paul");
+                db.Groups.Add(group);
                 db.SaveChanges();
 
             }

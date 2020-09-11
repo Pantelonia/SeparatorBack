@@ -16,16 +16,16 @@ namespace SeparatorBack.Controllers
         public GroupController(GroupContext context)
         {
             db = context;
-            if (!db.Groups.Any())
-            {                
-                Group group = new Group("Pokorili");
-                group.AddNewFriend("Paul");
-                Dish dish = new Dish("Borsch", 70);
-                group.Create_personal_dish(dish, "Paul");
-                db.Groups.Add(group);
-                db.SaveChanges();
+            //if (!db.Groups.Any())
+            //{                
+            //    Group group = new Group("Pokorili");
+            //    group.AddNewFriend("Paul");
+            //    Dish dish = new Dish("Borsch", 70);
+            //    group.Create_personal_dish(dish, "Paul");
+            //    db.Groups.Add(group);
+            //    db.SaveChanges();
 
-            }
+            //}
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Group>>> Get()

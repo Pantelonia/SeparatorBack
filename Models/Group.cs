@@ -9,24 +9,10 @@ namespace SeparatorBack.Models
 {
     public class Group
     {
-        private string name;
         public int Id { get; set; }
 
         public List<Friend> Friends { get; set; }
-        public string Name
-        {
-            set
-            {
-                name = value ?? "Unnamed";
-                if (name.Length > 1)
-                    name = char.ToUpper(name[0]) + name.Substring(1);
-
-            }
-            get
-            {
-                return name;
-            }
-        }
+        public string Name { get; set; }
 
         [Required(ErrorMessage = "Input total cost")]
         public int TotalCost { get; set; }

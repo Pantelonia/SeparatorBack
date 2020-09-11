@@ -22,7 +22,7 @@ namespace SeparatorBack
             app.UseDeveloperExceptionPage();
 
             app.UseRouting();
-            app.UseCors(builder => { builder.AllowAnyOrigin(); builder.AllowAnyHeader(); });
+            app.UseCors(builder => { builder.AllowAnyOrigin(); builder.AllowAnyHeader(); builder.AllowAnyMethod(); });
 
             app.UseEndpoints(endpoints =>
             {

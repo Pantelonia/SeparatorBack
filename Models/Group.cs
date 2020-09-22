@@ -11,7 +11,7 @@ namespace SeparatorBack.Models
     {
         public int Id { get; set; }
 
-        public List<Friend> Friends { get; set; }
+        public virtual List<Friend> Friends { get; set; }
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Input total cost")]

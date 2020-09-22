@@ -8,24 +8,12 @@ namespace SeparatorBack.Models
     public class Friend
     {
         public int Id { get; set; }
-        private string name;
+        public string Name { get; set; }
+        public int GroupId { get; set; }
+        public virtual Group Group { get; set; }
+        
         public List<Dish> dishes;
 
-
-        public string Name
-        {
-            set
-            {
-                name = value ?? "Unnamed";
-                if (name.Length > 1)
-                    name = char.ToUpper(name[0]) + name.Substring(1);
-
-            }
-            get
-            {
-                return name;
-            }
-        }
 
         public void Add_dish(Dish dish)
         {

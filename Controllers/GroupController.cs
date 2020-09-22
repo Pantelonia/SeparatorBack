@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using SeparatorBack.Models;
 using System.Threading.Tasks;
-
+using System;
 
 namespace SeparatorBack.Controllers
 {
@@ -28,6 +28,7 @@ namespace SeparatorBack.Controllers
             //}
         }
         [HttpGet]
+         [HttpGet]
         public async Task<ActionResult<IEnumerable<Group>>> Get()
         {
             return await db.Groups.ToListAsync();
@@ -37,7 +38,8 @@ namespace SeparatorBack.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Group>> Get(int id)
         {
-            Group group = await db.Groups.FirstOrDefaultAsync(x => x.Id == id);
+            Group group = await db.Groups.FindAsync(id);
+            //Group group = await db.Groups.FirstOrDefaultAsync(x => x.Id == id);
             if (group == null)
                 return NotFound();
             return new ObjectResult(group);

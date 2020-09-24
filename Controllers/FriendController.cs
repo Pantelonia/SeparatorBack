@@ -78,5 +78,19 @@ namespace SeparatorBack.Controllers
             await db.SaveChangesAsync();
             return Ok(friend);
         }
+
+        // DELETE api/users/5
+        [HttpDelete("deleteDish/{id}")]
+        public async Task<ActionResult<Friend>> DeleteDish(int  id)
+        {
+            Dish dish = db.Dishes.FirstOrDefault(x => x.Id == id);
+            if (dish == null)
+            {
+                return NotFound();
+            }
+            db.Dishes.Remove(dish);
+            await db.SaveChangesAsync();
+            return Ok(dish);
+        }
     }
 }

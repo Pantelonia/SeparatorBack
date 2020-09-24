@@ -10,11 +10,11 @@ namespace SeparatorBack
         public void ConfigureServices(IServiceCollection services)
         {
             string con = "Server=(localdb)\\mssqllocaldb;Database=separatodbstore;Trusted_Connection=True;";
-            // устанавливаем контекст данных
-            services.AddDbContext<GroupContext>(options => options.UseLazyLoadingProxies().UseSqlServer(con));
+В В В В В В В В В В В В // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєРѕРЅС‚РµРєСЃС‚ РґР°РЅРЅС‹С…
+В В В В В В В В В В В В services.AddDbContext<GroupContext>(options => options.UseLazyLoadingProxies().UseSqlServer(con));
             services.AddCors();
 
-            services.AddControllers(); // используем контроллеры без представлений
+            services.AddControllers(); // РёСЃРїРѕР»СЊР·СѓРµРј РєРѕРЅС‚СЂРѕР»Р»РµСЂС‹ Р±РµР· РїСЂРµРґСЃС‚Р°РІР»РµРЅРёР№
             services.AddControllersWithViews()
                  .AddNewtonsoftJson(options =>
                  options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
@@ -29,8 +29,8 @@ namespace SeparatorBack
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers(); // подключаем маршрутизацию на контроллеры
-            });
+                endpoints.MapControllers(); // РїРѕРґРєР»СЋС‡Р°РµРј РјР°СЂС€СЂСѓС‚РёР·Р°С†РёСЋ РЅР° РєРѕРЅС‚СЂРѕР»Р»РµСЂС‹
+В В В В В В В В В В В В });
         }
     }
 }

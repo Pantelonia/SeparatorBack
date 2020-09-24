@@ -23,6 +23,11 @@ namespace SeparatorBack.Models
             Friends.Add(friend);
             Console.WriteLine($"Welcome to the {Name} group!\n");
         }
+        public void AddNewFriend(Friend friend)
+        {            
+            Friends.Add(friend);
+            Console.WriteLine($"Welcome to the {Name} group!\n");
+        }
         public void DeleteFriend(Friend friend)
         {
             Friends.Remove(friend);

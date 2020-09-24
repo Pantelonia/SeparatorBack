@@ -17,11 +17,12 @@ namespace SeparatorBack.Controllers
         {
             db = context;
             //if (!db.Groups.Any())
-            //{                
+            //{
             //    Group group = new Group("Pokorili");
-            //    group.AddNewFriend("Paul");
+            //    Friend friend = new Friend("Paul");               
             //    Dish dish = new Dish("Borsch", 70);
-            //    group.Create_personal_dish(dish, "Paul");
+            //    friend.Add_dish(dish);
+            //    group.AddNewFriend("Paul");
             //    db.Groups.Add(group);
             //    db.SaveChanges();
 
@@ -45,6 +46,17 @@ namespace SeparatorBack.Controllers
             return new ObjectResult(group);
         }
 
+        // GET api/users/5 by name
+        [HttpGet("name/{name}")]
+        public async Task<ActionResult<Group>> GetByName(string name )
+        {
+            //Group group = await db.Groups.FindAsync(id);
+            Group group = await db.Groups.FirstOrDefaultAsync(x => x.Name == name);
+            if (group == null)
+                return NotFound();
+            return new ObjectResult(group);
+        }
+
         // POST api/users
         [HttpPost]
         public async Task<ActionResult<Group>> Post(Group group)
@@ -60,18 +72,19 @@ namespace SeparatorBack.Controllers
         }
 
         // PUT api/users/
-        [HttpPut]
-        public async Task<ActionResult<Group>> Put(Group group)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Group>> Put(Friend friend)
         {
-            if (group == null)
+            if (friend == null)
             {
                 return BadRequest();
             }
+            Group group = await db.Groups.FindAsync(friend.GroupId);
             if (!db.Groups.Any(x => x.Id == group.Id))
             {
                 return NotFound();
             }
-
+            group.AddNewFriend(friend);
             db.Update(group);
             await db.SaveChangesAsync();
             return Ok(group);

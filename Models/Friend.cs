@@ -12,18 +12,18 @@ namespace SeparatorBack.Models
         public int GroupId { get; set; }
         public virtual Group Group { get; set; }
         
-        public List<Dish> dishes;
+        public virtual List<Dish> Dishes { get; set; }
 
 
         public void Add_dish(Dish dish)
         {
-            dishes.Add(dish);
+            Dishes.Add(dish);
         }
       
         public decimal TakeCost()
         {
             decimal cost = 0;
-            foreach (Dish d in dishes)
+            foreach (Dish d in Dishes)
             {
                 cost = cost + d.Cost;
             }
@@ -34,7 +34,7 @@ namespace SeparatorBack.Models
         public Friend(string name)
         {
             Name = name;
-            dishes = new List<Dish>();
+            Dishes = new List<Dish>();
         }
 
     }

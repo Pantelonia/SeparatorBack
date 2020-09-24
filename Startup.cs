@@ -9,7 +9,7 @@ namespace SeparatorBack
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            string con = "Server=(localdb)\\mssqllocaldb;Database=separatodbstore;Trusted_Connection=True;";
+            string con = "Server=(localdb)\\mssqllocaldb;Database=separatodbstore;Database=relationsdb;Trusted_Connection=True;";
             // устанавливаем контекст данных
             services.AddDbContext<GroupContext>(options => options.UseLazyLoadingProxies().UseSqlServer(con));
             services.AddCors();

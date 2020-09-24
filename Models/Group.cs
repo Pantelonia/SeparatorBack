@@ -42,12 +42,13 @@ namespace SeparatorBack.Models
         }
         public void Create_communal_dish(Dish dish)
         {
+            TotalCost = TotalCost + dish.Cost;
+            dish.Cost = dish.Cost / Friends.Count;
             Console.WriteLine($"Add dish {dish.Name} to all friend");
             foreach (Friend friend in Friends)
             {
                 friend.Add_dish(dish);
             }
-            TotalCost = TotalCost + dish.Cost;
         }
 
         public Group() : this("Unnamed") { }

@@ -46,24 +46,24 @@ namespace SeparatorBack.Controllers
         }
 
 
-        // PUT api/users/
-        //[HttpPut("{id}")]
-        //public async Task<ActionResult<Group>> Put(Dish dish)
-        //{
-        //    if (dish == null)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    Friend friend = await db.Friends.FindAsync(dish.FriendId);
-        //    if (!db.Groups.Any(x => x.Id == friend.Id))
-        //    {
-        //        return NotFound();
-        //    }
-        //    friend.Add_dish(dish);
-        //    db.Update(friend);
-        //    await db.SaveChangesAsync();
-        //    return Ok(friend);
-        //}
+        //PUT api/users/
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Group>> Put(Dish dish)
+        {
+            if (dish == null)
+            {
+                return BadRequest();
+            }
+            Friend friend = await db.Friends.FindAsync(dish.FriendId);
+            if (!db.Groups.Any(x => x.Id == friend.Id))
+            {
+                return NotFound();
+            }
+            friend.Add_dish(dish);
+            db.Update(friend);
+            await db.SaveChangesAsync();
+            return Ok(friend);
+        }
 
         // DELETE api/users/5
         [HttpDelete("{id}")]

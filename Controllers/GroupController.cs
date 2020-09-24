@@ -71,6 +71,29 @@ namespace SeparatorBack.Controllers
             return Ok(group);
         }
 
+        // POST api/users
+        [HttpPut("addDish/")]
+        public async Task<ActionResult<Group>> PostDish(Dish dish)
+        {
+            if (dish == null)
+            {
+                return BadRequest();
+            }
+            Friend friend = await db.Friends.FindAsync(dish.FriendId);
+            Group group = await db.Groups.FindAsync(friend.GroupId);
+            if (dish.Type)
+            {
+                group.Create_communal_dish(dish);
+            }
+            else
+            {
+                group.Create_personal_dish(dish, friend.Name);
+            }
+            db.Groups.Update(group);
+            await db.SaveChangesAsync();
+            return Ok(group);
+        }
+
         // PUT api/users/
         [HttpPut("{id}")]
         public async Task<ActionResult<Group>> Put(Friend friend)

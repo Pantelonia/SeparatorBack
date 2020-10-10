@@ -81,14 +81,18 @@ namespace SeparatorBack.Controllers
 
         // DELETE api/users/5
         [HttpDelete("deleteDish/{id}")]
-        public async Task<ActionResult<Friend>> DeleteDish(int  id)
+        public async Task<ActionResult<Friend>> DeleteDish (int  id)
         {
             Dish dish = db.Dishes.FirstOrDefault(x => x.Id == id);
             if (dish == null)
             {
                 return NotFound();
             }
+            Friend friend = db.Friends.FirstOrDefault(x => x.Id == dish.FriendId);
+            Group group = db.Groups.FirstOrDefault(x => x.Id == friend.GroupId);
+            group.TotalCost -= dish.Cost;
             db.Dishes.Remove(dish);
+            db.Groups.Update(group);
             await db.SaveChangesAsync();
             return Ok(dish);
         }
